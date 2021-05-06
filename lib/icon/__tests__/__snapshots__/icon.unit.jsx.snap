@@ -1,15 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`icon is a svg 1`] = `
-<svg
-  className="aui-icon"
->
-  <use
-    xlinkHref="#alipay"
-  />
-</svg>
-`;
-
 exports[`icon render successully 1`] = `
 <svg
   className="aui-icon"
