@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Dialog, { alert, confirm, modal } from './dialog';
 
+
 export default function () {
   const [x, setX] = useState(false);
   const [y, setY] = useState(false);
