@@ -6,9 +6,9 @@ import React, {
 } from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
 import { Icon } from '../index';
-import { scopedClassMaker } from '../classes';
 import './dialog.scss';
 import { createPortal } from 'react-dom';
+import { scopedClassMaker } from '../helper/classes';
 
 interface Props {
   visible: boolean;
