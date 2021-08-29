@@ -9,7 +9,7 @@ const Content: React.FC<Props> = (props) => {
   const { className, ...otherProps } = props;
   return (
     <div className={sc('content', { extra: className })} {...otherProps}>
-      content
+      {props.children}
     </div>
   );
 };

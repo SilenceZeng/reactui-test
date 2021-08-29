@@ -9,7 +9,7 @@ const Footer: React.FC<Props> = (props) => {
   const { className, ...otherProps } = props;
   return (
     <div className={sc('footer', { extra: className })} {...otherProps}>
-      footer
+      {props.children}
     </div>
   );
 };

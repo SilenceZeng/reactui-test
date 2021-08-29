@@ -9,7 +9,7 @@ const Aside: React.FC<Props> = (props) => {
   const { className, ...otherProps } = props;
   return (
     <div className={sc('aside', { extra: className })} {...otherProps}>
-      aside
+      {props.children}
     </div>
   );
 };

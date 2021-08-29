@@ -9,7 +9,7 @@ const Header: React.FC<Props> = (props) => {
   const { className, ...otherProps } = props;
   return (
     <div className={sc('header', { extra: className })} {...otherProps}>
-      header
+      {props.children}
     </div>
   );
 };

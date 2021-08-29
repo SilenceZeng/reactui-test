@@ -4,48 +4,49 @@ import Header from './header';
 import Content from './content';
 import Footer from './footer';
 import Aside from './aside';
+import './layout.example.scss';
 
 const LayoutExample = () => {
   return (
-    <div>
+    <div className="layout-example">
       <div>
         <h1>第一个例子</h1>
-        <Layout style={{ height: 500 }} className="hi">
-          <Header></Header>
-          <Content></Content>
-          <Footer></Footer>
+        <Layout style={{ height: 500, width: 500 }}>
+          <Header>Header</Header>
+          <Content>Content</Content>
+          <Footer>Footer</Footer>
         </Layout>
       </div>
       <div>
         <h1>第二个例子</h1>
-        <Layout style={{ height: 500 }} className="hi">
-          <Header></Header>
+        <Layout style={{ height: 500, width: 500 }}>
+          <Header>Header</Header>
           <Layout>
-            <Aside></Aside>
-            <Content></Content>
+            <Aside>Aside</Aside>
+            <Content>Content</Content>
           </Layout>
-          <Footer></Footer>
+          <Footer>Footer</Footer>
         </Layout>
       </div>
       <div>
         <h1>第三个例子</h1>
-        <Layout style={{ height: 500 }} className="hi">
-          <Header></Header>
+        <Layout style={{ height: 500, width: 500 }}>
+          <Header>Header</Header>
           <Layout>
-            <Content></Content>
-            <Aside></Aside>
+            <Content>Content</Content>
+            <Aside>Aside</Aside>
           </Layout>
-          <Footer></Footer>
+          <Footer>Footer</Footer>
         </Layout>
       </div>
       <div>
         <h1>第四个例子</h1>
-        <Layout style={{ height: 500 }} className="hi">
-          <Aside></Aside>
+        <Layout style={{ height: 500, width: 500 }}>
+          <Aside>Aside</Aside>
           <Layout>
-            <Header></Header>
-            <Content></Content>
-            <Footer></Footer>
+            <Header>Header</Header>
+            <Content>Content</Content>
+            <Footer>Footer</Footer>
           </Layout>
         </Layout>
       </div>
