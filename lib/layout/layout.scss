@@ -8,7 +8,7 @@
     flex: 1;
   }
 
-  & & {
+  &>& {
     flex: 1;
     display: flex;
     flex-direction: row;
@@ -16,7 +16,7 @@
 
   &-hasAside {
     flex-direction: row;
-    .aui-layout {
+    > .aui-layout {
       flex-direction: column;
     }
   }
