@@ -5,10 +5,7 @@
     "baseUrl": "./",
     "module": "esnext",
     "target": "es5",
-    "lib": [
-      "es6",
-      "dom"
-    ],
+    "lib": ["es6", "dom"],
     "sourceMap": true,
     "jsx": "react",
     "moduleResolution": "node",
@@ -25,9 +22,7 @@
     "esModuleInterop": true,
     "noUnusedLocals": true
   },
-  "include": [
-    "/lib/**/*"
-  ],
+  "include": ["/lib/**/*"],
   "exclude": [
     "node_modules",
     "build",

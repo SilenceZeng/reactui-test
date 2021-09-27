@@ -7,6 +7,7 @@ import { Aside, Content, Footer, Header, Layout } from './lib/layout/layout';
 import './example.scss';
 import IconDemo from './lib/icon/icon.demo';
 import DialogDemo from './lib/dialog/dialog.demo';
+import FormExample from './lib/form/form.example';
 
 const logo = require('./logo.png');
 
@@ -35,6 +36,9 @@ ReactDOM.render(
             <li>
               <Link to="/layout">布局</Link>
             </li>
+            <li>
+              <Link to="/form">表单</Link>
+            </li>
           </ul>
         </Aside>
         <Content className="site-main">
@@ -42,6 +46,7 @@ ReactDOM.render(
           <Route path="/button" component={ButtonExample} />
           <Route path="/dialog" component={DialogDemo} />
           <Route path="/layout" component={LayoutExample} />
+          <Route path="/form" component={FormExample} />
         </Content>
       </Layout>
       <Footer className="site-footer">&copy; angus</Footer>
