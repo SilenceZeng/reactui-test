@@ -1,4 +1,10 @@
-import React, { MouseEventHandler, useEffect, useRef, useState } from 'react';
+import React, {
+  MouseEventHandler,
+  TouchEventHandler,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { getScrollbarWidth } from './scrollHelper';
 import './scroll.scss';
 
@@ -99,14 +105,58 @@ const Scroll: React.FC<Props> = (props) => {
     };
   }, []);
 
+  const [translateY, _setTranslateY] = useState(0);
+  const setTranslateY = (y: number) => {
+    if (y < 0) {
+      y = 0;
+    } else if (y > 150) {
+      y = 150;
+    }
+    _setTranslateY(y);
+  };
+  const lastYRef = useRef(0);
+  const moveCountRef = useRef(0);
+  const pullingRef = useRef(false);
+
+  // TODO mac 下拉效果不理想
+  const onTouchStart: TouchEventHandler = (e) => {
+    const scrollTop = containerRef.current!.scrollTop;
+    if (scrollTop !== 0) {
+      return;
+    }
+    pullingRef.current = true;
+    lastYRef.current = e.touches[0].clientY;
+    moveCountRef.current = 0;
+  };
+
+  const onTouchMove: TouchEventHandler = (e) => {
+    const deltaY = e.touches[0].clientY - lastYRef.current;
+    moveCountRef.current += 1;
+    if (moveCountRef.current === 1 && deltaY < 0) {
+      pullingRef.current = false;
+      return;
+    }
+    setTranslateY(translateY + deltaY);
+  };
+
+  const onTouchEnd: TouchEventHandler = (e) => {
+    setTranslateY(0);
+  };
+
   const { children, ...rest } = props;
   return (
     <div className="aui-scroll" {...rest}>
       <div
         className="aui-scroll-inner"
-        style={{ right: -getScrollbarWidth() }}
+        style={{
+          right: -getScrollbarWidth(),
+          transform: `translateY(${translateY}px)`,
+        }}
         ref={containerRef}
         onScroll={onScroll}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
       >
         {children}
       </div>
@@ -119,6 +169,14 @@ const Scroll: React.FC<Props> = (props) => {
           />
         </div>
       )}
+      {/* TODO 优化下拉样式 */}
+      <div className="aui-scroll-pulling" style={{ height: translateY }}>
+        {translateY === 150 ? (
+          <span className="aui-scroll-pulling-text">释放手指即可更新</span>
+        ) : (
+          <span className="aui-scroll-pulling-icon">↓</span>
+        )}
+      </div>
     </div>
   );
 };
