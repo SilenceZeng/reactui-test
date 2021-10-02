@@ -1,0 +1,30 @@
+.aui-scroll {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid red;
+
+  &-inner {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    overflow: auto;
+  }
+
+  &-track {
+    width: 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+  }
+  &-bar {
+    height: 30px;
+    background: rgba(128, 128, 128, 0.8);
+    position: absolute;
+    top: 0;
+    left: 2px;
+    width: 6px;
+    border-radius: 3px;
+  }
+}

@@ -8,6 +8,7 @@ import './example.scss';
 import IconDemo from './lib/icon/icon.demo';
 import DialogDemo from './lib/dialog/dialog.demo';
 import FormExample from './lib/form/form.example';
+import ScrollExample from './lib/scroll/scroll.example';
 
 const logo = require('./logo.png');
 
@@ -39,6 +40,9 @@ ReactDOM.render(
             <li>
               <Link to="/form">表单</Link>
             </li>
+            <li>
+              <Link to="/scroll">Scroll</Link>
+            </li>
           </ul>
         </Aside>
         <Content className="site-main">
@@ -47,6 +51,7 @@ ReactDOM.render(
           <Route path="/dialog" component={DialogDemo} />
           <Route path="/layout" component={LayoutExample} />
           <Route path="/form" component={FormExample} />
+          <Route path="/scroll" component={ScrollExample} />
         </Content>
       </Layout>
       <Footer className="site-footer">&copy; angus</Footer>

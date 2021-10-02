@@ -90,6 +90,7 @@ function flat<T>(array: Array<T | T[]>) {
   const result: T[] = [];
   for (let i = 0; i < array.length; i++) {
     if (array[i] instanceof Array) {
+      // @ts-ignore
       result.push(...(array[i] as T[]));
     } else {
       result.push(array[i] as T);
