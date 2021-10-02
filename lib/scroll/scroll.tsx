@@ -2,6 +2,8 @@ import React, { MouseEventHandler, useEffect, useRef, useState } from 'react';
 import { getScrollbarWidth } from './scrollHelper';
 import './scroll.scss';
 
+const isTouchDevice = 'ontouchstart' in document.documentElement;
+
 interface Props extends React.HTMLAttributes<HTMLDivElement> {}
 
 const Scroll: React.FC<Props> = (props) => {
@@ -11,6 +13,8 @@ const Scroll: React.FC<Props> = (props) => {
   const draggingRef = useRef(false);
   const firstYRef = useRef(0);
   const firstBarTopRef = useRef(0);
+  const [barVisible, setBarVisible] = useState(isTouchDevice ? false : true);
+  const timeoutIdRef = useRef(0);
 
   const setBarTop = (number: number) => {
     if (number < 0) {
@@ -32,6 +36,16 @@ const Scroll: React.FC<Props> = (props) => {
     const scrollTop = current!.scrollTop;
     const viewHeight = current!.getBoundingClientRect().height;
     setBarTop((viewHeight * scrollTop) / scrollHeight);
+    if (!isTouchDevice) {
+      return;
+    }
+    setBarVisible(true);
+    if (timeoutIdRef.current) {
+      clearTimeout(timeoutIdRef.current);
+    }
+    timeoutIdRef.current = window.setTimeout(() => {
+      setBarVisible(false);
+    }, 300);
   };
 
   const onMouseDownBar: MouseEventHandler = (e) => {
@@ -96,13 +110,15 @@ const Scroll: React.FC<Props> = (props) => {
       >
         {children}
       </div>
-      <div className="aui-scroll-track">
-        <div
-          className="aui-scroll-bar"
-          style={{ height: barHeight, transform: `translateY(${barTop}px)` }}
-          onMouseDown={onMouseDownBar}
-        />
-      </div>
+      {barVisible && (
+        <div className="aui-scroll-track">
+          <div
+            className="aui-scroll-bar"
+            style={{ height: barHeight, transform: `translateY(${barTop}px)` }}
+            onMouseDown={onMouseDownBar}
+          />
+        </div>
+      )}
     </div>
   );
 };
