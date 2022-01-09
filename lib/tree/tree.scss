@@ -1,0 +1,44 @@
+.aui-tree {
+  &-item {
+    border: 1px solid;
+    line-height: 1.5;
+  }
+  &-level-1 {
+    .aui-tree-text {
+      padding-left: 0;
+    }
+  }
+  &-level-2 {
+    .aui-tree-text {
+      padding-left: 1em;
+    }
+  }
+  &-level-3 {
+    .aui-tree-text {
+      padding-left: 2em;
+    }
+  }
+  &-level-4 {
+    .aui-tree-text {
+      padding-left: 3em;
+    }
+  }
+  &-level-5 {
+    .aui-tree-text {
+      padding-left: 3em;
+    }
+  }
+  &-text {
+    display: block;
+    &:hover {
+      background: yellow;
+    }
+  }
+  &-children {
+    overflow: hidden;
+    transition: height 200ms;
+    &-gone {
+      height: 0;
+    }
+  }
+}

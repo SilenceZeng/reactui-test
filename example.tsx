@@ -9,6 +9,7 @@ import IconDemo from './lib/icon/icon.demo';
 import DialogDemo from './lib/dialog/dialog.demo';
 import FormExample from './lib/form/form.example';
 import ScrollExample from './lib/scroll/scroll.example';
+import TreeExample from './lib/tree/tree.example';
 
 const logo = require('./logo.png');
 
@@ -43,6 +44,9 @@ ReactDOM.render(
             <li>
               <Link to="/scroll">Scroll</Link>
             </li>
+            <li>
+              <Link to="/tree">Tree</Link>
+            </li>
           </ul>
         </Aside>
         <Content className="site-main">
@@ -52,6 +56,7 @@ ReactDOM.render(
           <Route path="/layout" component={LayoutExample} />
           <Route path="/form" component={FormExample} />
           <Route path="/scroll" component={ScrollExample} />
+          <Route path="/tree" component={TreeExample} />
         </Content>
       </Layout>
       <Footer className="site-footer">&copy; angus</Footer>
